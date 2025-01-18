@@ -20,7 +20,7 @@ const bigNumber = 263774567589458974927578758795794375n
 
 
 
-// Refrence Types (Non primitive)
+// Refrence Types Or (Non primitive)
 
 // Arrays, Objects, Functions
 
@@ -37,4 +37,28 @@ console.log("Hello World");
  console.log(typeof myObj);
 
  //ecmascript tc39 documentSummary
+
+ // *****************************************************
+
+ // stack (Primitive) , Heap (Non-Primitive)
+
+ let myYoutubename = "hiteshchoudharydotcom"
+
+ let anothername = myYoutubename
+ anothername = "chaiorcode"
+
+ console.log(myYoutubename);
+ console.log(anothername);
+
+ let userOne ={
+    email:"user@google.com",
+    upi:"user@yvbl"
+ }
+ let userTwo = userOne
+ userTwo.email = "ruchi@google.com"
+
+ console.log(userOne.email);
+ console.log(userTwo.email);
+ 
+ 
  
