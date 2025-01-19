@@ -30,7 +30,7 @@ const anotherString = gameName.slice(-11, 4)
 
  const url = "https://hitesh.com/hitesh%20chaudhary"
 
-//  console.log(  url.replace('%20', '-'));
+ console.log(  url.replace('%20', '-'));
 
 console.log( url.includes('hi'));
 
