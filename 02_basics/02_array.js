@@ -21,7 +21,7 @@ const real_another_array = another_array.flat(Infinity)
 console.log(real_another_array);
 
 console.log( Array.isArray("Hitesh"));
-console.log( Array.from("Hitesh "));
+console.log( Array.from("Hitesh ")); // convet it into single letter in array
 console.log(Array.from({name:"hitesh"})); 
 
 let score1 =100
