@@ -79,6 +79,172 @@ setInterval(function () {
 
 ````
 
+##  project 4 solution code
+
+````javascript
+let randomNumber = parseInt(Math.random() * 100 + 1);
+const submit = document.querySelector('#subt');
+const userInput = document.querySelector('#guessField');
+const guessSlot = document.querySelector('.guesses');
+const remaining = document.querySelector('.lastResult');
+const lowOrHight = document.querySelector('.lowOrHi');
+const startOver = document.querySelector('.resultParas');
+
+const p = document.createElement('p');
+let prevGuess = [];
+let numGuess = 1;
+let playGame = true;
+
+if (playGame) {
+  submit.addEventListener('click', function (e) {
+    e.preventDefault();
+    const guess = parseInt(userInput.value);
+    console.log(guess);
+    validateGuess(guess);
+  });
+}
+
+function validateGuess(guess) {
+  if (isNaN(guess)) {
+    alert('Please enter a valid Number');
+  } else if (guess < 1) {
+    alert('Please enter a number more than 1');
+  } else if (guess > 100) {
+    alert('Please enter a  Number less than 100');
+  } else {
+    prevGuess.push(guess);
+    if (numGuess === 11) {
+      displayGuess(guess);
+      displayMessage(`Game Over Random Number was ${randomNumber}`);
+      endGame();
+    } else {
+      displayGuess(guess);
+      checkGuess(guess);
+    }
+  }
+}
+
+function checkGuess(guess) {
+  if (guess === randomNumber) {
+    displayMessage(`You guess it right`);
+    endGame();
+  } else if (guess < randomNumber) {
+    displayMessage(`Nim is Too low`);
+  } else if (guess > randomNumber) {
+    displayMessage(`Nim is Too highy`);
+  }
+}
+function displayGuess(guess) {
+  userInput.value = '';
+  guessSlot.innerHTML += ` ${guess}, `;
+  numGuess++;
+  remaining.innerHTML = `${11 - numGuess}`;
+}
+
+function displayMessage(message) {
+  lowOrHight.innerHTML = `<h2>${message}</h2>`;
+}
+
+function endGame() {
+  userInput.value = '';
+  userInput.setAttribute('disabled', '');
+  p.classList.add('button');
+  p.innerHTML = `<h2 id = "newGame">Start new Game</h2>`;
+  startOver.appendChild(p);
+  playGame = false;
+  newGame();
+}
+
+function newGame() {
+  const newGameButton = document.querySelector('#newGame');
+  newGameButton.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    randomNumber = parseInt(Math.random() * 100 + 1);
+    prevGuess = [];
+    numGuess = 1;
+    guessSlot.innerHTML = '';
+    remaining.innerHTML = `${11 - numGuess}`;
+    userInput.removeAttribute('disabled');
+    startOver.removeChild(p);
+
+    playGame = true;
+  });
+}
+
+
+````
+### project 5 soltion code
+
+````javascript
+
+console.log('Project 5');
+const insert = document.getElementById('insert');
+
+window.addEventListener('keydown', (e) => {
+  insert.innerHTML = `
+<div class = "color">
+<table>
+  <tr>
+    <th>key</th>
+    <th>keyCOde</th>
+    <th>code</th>
+  </tr>
+  <tr>
+    <td>${e.key === ' ' ? 'space' : e.key}</td>
+    <td> ${e.keyCode}</td>
+    <td>${e.code}</td>
+  </tr>
+
+  
+</table>
+
+</div>
+`;
+});
+
+`````
+
+### project 6 soltion code
+
+````javascript
+const randomColor = function () {
+  const hex = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += hex[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
+
+let intervalId;
+const startchangingcolor = function () {
+  if (!intervalId) {
+    intervalId = setInterval(changeBgcolor, 1000);
+  }
+
+  function changeBgcolor() {
+    document.body.style.backgroundColor = randomColor();
+  }
+};
+const stopchangingcolor = function () {
+  clearInterval(intervalId);
+  intervalId = null;
+};
+
+const start = document
+  .querySelector('#start')
+  .addEventListener('click', startchangingcolor);
+
+const stop = document
+  .querySelector('#stop')
+  .addEventListener('click', stopchangingcolor);
+
+
+`````
+
+
+
 
 
 
